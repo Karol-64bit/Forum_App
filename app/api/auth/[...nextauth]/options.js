@@ -67,7 +67,7 @@ export const options = {
                   if (match) {
                     console.log("Good Pass");
                     delete foundUser.password;
-      
+                    foundUser["id"] = foundUser._id;
                     foundUser["role"] = "Unverified Email";
                     return foundUser;
                   }
@@ -84,10 +84,12 @@ export const options = {
     callbacks: {
         async jwt({token, user}){
             if(user) token.role = user.role
+            if(user) token.id = user.id
             return token
         },
         async session({session, token}) {
             if(session?.user) session.user.role = token.role
+            if(session?.user) session.user.id = token.id
             return session
         }
     }

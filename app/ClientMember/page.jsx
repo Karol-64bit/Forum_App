@@ -11,13 +11,12 @@ const Member = () => {
       redirect("/api/auth/signin?callbackUrl=/ClientMember")
     },
   });
-  
-
   return (
     <div>
       <h1>Member Client Session</h1>
       <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
+      <p>{session?.user?.id}</p>
     </div>
   )
 }
