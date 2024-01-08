@@ -6,6 +6,7 @@ mongoose.Promise = global.Promise;
 const postSchema = new Schema(
   {
     userId: String,
+    userName: String,
     content: String,
     threadId: String,
   },
