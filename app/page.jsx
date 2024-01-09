@@ -1,9 +1,10 @@
 import React from 'react'
+import AllSections from './(components)/AllSections'
 
 const Home = () => {
   return (
     <div>
-      Home
+      <AllSections />
     </div>
   )
 }
