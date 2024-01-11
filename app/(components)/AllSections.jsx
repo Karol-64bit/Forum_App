@@ -5,6 +5,7 @@ import Link from 'next/link'
 const getSections = async () =>{
     try{
         const res = await fetch("http://localhost:3000/api/Section", {
+          type: 'GET', // ?
           cache: "no-store"
         })
         return res.json();
@@ -24,6 +25,7 @@ const AllSections = async () => {
             <Link href={`/SectionPage/${section._id}`}>
                 <Section section={section} />
             </Link>
+            {section.title}
         </div>
       ))}
     </div>

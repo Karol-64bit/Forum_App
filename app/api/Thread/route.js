@@ -5,37 +5,41 @@ import { NextResponse } from "next/server";
 export async function POST(req){
     try {
         const body = await req.json();
-        const sectionId = body.formData.sectionId
+        const sectionId = body.formData.section
         const thread = {
+            userId: body.formData.userId,
+            userName: body.formData.userName,
             title: body.formData.title,
             question: body.formData.question,
-            userId: body.formData.title,
-            UserName: body.formData.title,
-            posts:[],
-
+            sectionId: sectionId,
         }
-        console.log(body.formData)
-        const section = await Section.findById(sectionId);
-        
+        // console.log(thread);
+        // console.log(sectionId);
+        const section = await Section.findById(sectionId);  
         if (section){
-            section.threads.push(thread);
-            await section.save();
+            // console.log(thread);
+            await Thread.create(thread);
+            return NextResponse.json({message: "OK"},{status: 200});
         }else{
+            console.log("Thread not found");
             return NextResponse.json({ message: "Cant find section", error }, { status: 500 });
         }
 
-        
 
-        // const section = await Section.findByIdAndUpdate(
-        //     sectionId,
-        //     { $push: { threads: thread. }}
-        //     );
 
-        console.log(thread);
-        await Thread.create(thread);
-        return NextResponse.json({message: "OK"},{status: 200});
     } catch (error){
         console.log(error);
         return NextResponse.json({ message: "Error", error }, { status: 500 });
     }
 }
+
+export async function GET() {
+    try {
+      const threads = await Thread.find();
+  
+      return NextResponse.json({ threads }, { status: 200 });
+    } catch (err) {
+      console.log(err);
+      return NextResponse.json({ message: "Error", err }, { status: 500 });
+    }
+  }

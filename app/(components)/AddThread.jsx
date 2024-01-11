@@ -13,7 +13,7 @@ const AddThread = ({sectionId}) => {
   });
 
   const handleAddSection = async (e) => {
-    console.log({formData})
+    console.log(formData)
     e.preventDefault();
     const res = await fetch("/api/Thread",{
       method: "POST",
@@ -22,28 +22,23 @@ const AddThread = ({sectionId}) => {
     });
     console.log(res);
     if(!res.ok){
-        throw new Error("Failed to create new section.");
+        throw new Error("Failed to create new Thread.");
     }
   }
 
+
+  const [formData, setFormData] = useState({
+    userId: session?.user?.id,
+    userName: session?.user?.name,
+    title: '',
+    question: '',
+    section: sectionId,
+  });
+
   const handleChange = (e) => {
-    const testId = session?.user?.id
-    const testName = session?.user?.name
-    const value = e.target.value;
-    const name = e.target.name;
-    const updatedFormData = { [name]:value, content: value, userId: testId, userName: testName, sectionId: sectionId };
-    setFormData(updatedFormData);
-}
-
-  const startingData = {
-    userId: "",
-    userName: "",
-    title: "",
-    question: "",
-    sectionId: sectionId,
-  }
-
-  const [formData, setFormData] = useState(startingData)
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData,userId: session?.user?.id,userName: session?.user?.name, [name]: value }));
+  };
 
   return (
     <div>

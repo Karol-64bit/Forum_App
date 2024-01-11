@@ -1,34 +1,17 @@
+
+
+import AddThread from '@/app/(components)/AddThread';
+import ThreadsBySection from '@/app/(components)/ThreadsBySection';
 import React from 'react'
 
-const getThreadsById = async (id) => {
-  try{
-    const res = await fetch(`http://localhost:3000/api/Thread/${id}`,{
-      cache: "no-store"
-    })
 
-    if(!res.ok){
-      throw new Error("Failed to get the ticket")
-    }
-
-    return res.json();
-  } catch (error){
-    console.log(error)
-  }
-}
-
-const SectionPage = async ({params}) => {
-
-    const {data} = await getThreadsById(params.id);
+const SectionPage = ({params}) => {
 
     return (
         <div>
-            {params.id}
-            {data?.map(thread => (
-                <div key={thread._id}>
-                    {thread._id}
-                    {thread.name}
-                </div>
-            ))}
+          <h1>tutaj będą wątki z danej sekcji oraz dodawanie dowych wątków</h1>
+          <ThreadsBySection sectionId={params.id}/>
+          <AddThread sectionId={params.id}/>
         </div>
     )
 }
