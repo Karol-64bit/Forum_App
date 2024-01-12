@@ -11,6 +11,7 @@ const getThreadsById = async (id) => {
     if(!res.ok){
       throw new Error("Failed to get the ticket")
     }
+    
     console.log(res)
     return res.json();
   } catch (error){
@@ -20,20 +21,21 @@ const getThreadsById = async (id) => {
 
 const ThreadsBySection = async ({sectionId}) => {
 
-    const {threads} = await getThreadsById(sectionId);
 
+    const { foundThreads } = await getThreadsById(sectionId);
+    console.log(foundThreads);
     return (
-        <div>
-            {sectionId}
-            {threads?.map(thread => (
-                <div key={thread._id}>
-                  <Link href={`/`}>
-                      <Thread thread={thread} />
-                  </Link>
-                </div>
-            ))}
-        </div>
-    )
+      <div>
+        {sectionId}
+        {foundThreads?.map((thread) => (
+          <div key={thread._id}>
+            <Link href={`/`}>
+              <Thread thread={thread} />
+            </Link>
+          </div>
+        ))}
+      </div>
+    );
 }
 
 export default ThreadsBySection
