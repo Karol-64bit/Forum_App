@@ -8,9 +8,9 @@ export async function POST(req) {
     const userData = body.formData;
 
     //Confirm data exists
-    if (!userData?.email || !userData.password) {
+    if (!userData?.email || !userData.password || !userData.name) {
       return NextResponse.json(
-        { message: "All fields are required." },
+        { message: "Wszystkie pola są wymagane." },
         { status: 400 }
       );
     }
@@ -21,11 +21,13 @@ export async function POST(req) {
       .exec();
 
     if (duplicate) {
-      return NextResponse.json({ message: "Duplicate Email" }, { status: 409 });
+      return NextResponse.json({ message: "Podane mail istnieje już w bazie." }, { status: 409 });
     }
-
+    userData.role = "user";
+    console.log(userData)
     const hashPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashPassword;
+    console.log(userData);
 
     await User.create(userData);
     return NextResponse.json({ message: "User Created." }, { status: 201 });

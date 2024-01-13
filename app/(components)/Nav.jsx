@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { getServerSession } from 'next-auth'
 import { options } from '../api/auth/[...nextauth]/options'
-
+import LogoutButton from './LogoutButton'
 const Nav = async () => {
   const session = await getServerSession(options);
   return (
@@ -19,9 +19,9 @@ const Nav = async () => {
             <Link href="/Member">Member</Link>
             <Link href="/Public">Public</Link>
             {session ? (
-              <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
+              <LogoutButton />
             ) : (
-              <Link href="/api/auth/signin">Login</Link>
+              <Link href="/Login">Login</Link>
             )}
           </div>
         </nav>

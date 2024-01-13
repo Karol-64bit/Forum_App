@@ -5,6 +5,11 @@ import User from "@/app/(models)/User";
 import bcrypt from "bcrypt"
 
 export const options = {
+
+  pages: {
+    signIn: "/Login",
+  },
+
     providers: [
         GitHubProvider({
             profile(profile) {
@@ -40,16 +45,16 @@ export const options = {
           CredentialsProvider({
             name: "Credentials",
             credentials: {
-              email: {
-                label: "email:",
-                type: "text",
-                placeholder: "your-email",
-              },
-              password: {
-                label: "password:",
-                type: "password",
-                placeholder: "your-password",
-              },
+              // email: {
+              //   label: "Email:",
+              //   type: "text",
+              //   placeholder: "your-email",
+              // },
+              // password: {
+              //   label: "Password:",
+              //   type: "password",
+              //   placeholder: "your-password",
+              // },
             },
             async authorize(credentials) {
               try {
@@ -68,7 +73,7 @@ export const options = {
                     console.log("Good Pass");
                     delete foundUser.password;
                     foundUser["id"] = foundUser._id;
-                    foundUser["role"] = "Unverified Email";
+                    foundUser["role"] = foundUser.role;
                     return foundUser;
                   }
                 }
@@ -77,10 +82,8 @@ export const options = {
               }
               return null;
             },
-          }),
-        
+          })
     ],
-
     callbacks: {
         async jwt({token, user}){
             if(user) token.role = user.role
