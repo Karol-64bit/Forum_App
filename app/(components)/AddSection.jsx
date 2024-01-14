@@ -44,17 +44,41 @@ const AddSection = () => {
   const [formData, setFormData] = useState(startingData)
 
   return (
-    <div>
-      <h1>Add new section</h1>
-      <form method="post" onSubmit={handleAddSection}>
-        <label>Title</label>
-        <input id="title" type='text' name="title" onChange={handleChange} value={formData.title}/>
-        <label>Description</label>
-        <input id="description" type='text' name="description" onChange={handleChange} value={formData.description}/>
-        <input type='submit' name="submit" value="Add" />
-      </form>
+    <div className="relative flex flex-col items-center justify-center overflow-hidden mt-20">
+      <div className="w-full p-6 bg-white rounded-md shadow-md max-w-screen-xl">
+        <h1 className="text-3xl font-bold text-left text-gray-700">
+          Add new section
+        </h1>
+        <form method="post" onSubmit={handleAddSection} className="mt-6">
+          <div className="flex justify-between">
+            <label className="block text-sm font-semibold text-gray-800">
+              Title
+            </label>
+            <input
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              id="title"
+              type="text"
+              name="title"
+              onChange={handleChange}
+              value={formData.title}
+            />
+
+            <input className="" type="submit" name="submit" value="Add" />
+          </div>
+
+          <label className="">Description</label>
+          <input
+            className=""
+            id="description"
+            type="text"
+            name="description"
+            onChange={handleChange}
+            value={formData.description}
+          />
+        </form>
+      </div>
     </div>
-  )
+  );
 }
 
 export default AddSection
