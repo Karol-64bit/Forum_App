@@ -1,5 +1,3 @@
-
-
 import AddThread from '@/app/(components)/AddThread';
 import ThreadsBySection from '@/app/(components)/ThreadsBySection';
 import React from 'react'
