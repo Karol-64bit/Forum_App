@@ -16,13 +16,14 @@ export const options = {
                 console.log("Profile GitHub: ", profile)
 
                 let userRole = "GitHub User"
-                if(profile?.email == "ambalabamba42@gmail.com"){
+                if(profile?.email == process.env.ADMIN_EMAIL){
                     userRole = 'admin'
                 }
 
                 return {
                     ...profile,
                     role: userRole,
+                    avatar: profile.avatar_url,
                 };
             },
             clientId: process.env.GITHUB_ID,
@@ -33,10 +34,14 @@ export const options = {
               console.log("Profile Google: ", profile);
       
               let userRole = "Google User";
+              if(profile?.email == process.env.ADMIN_EMAIL){
+                userRole = 'admin'
+              }
               return {
                 ...profile,
                 id: profile.sub,
                 role: userRole,
+                avatar: profile.picture,
               };
             },
             clientId: process.env.GOOGLE_ID,
@@ -88,11 +93,13 @@ export const options = {
         async jwt({token, user}){
             if(user) token.role = user.role
             if(user) token.id = user.id
+            if(user) token.avatar = user.avatar
             return token
         },
         async session({session, token}) {
             if(session?.user) session.user.role = token.role
             if(session?.user) session.user.id = token.id
+            if(session?.user) session.user.avatar = token.avatar
             return session
         }
     }

@@ -1,15 +1,20 @@
 import AddThread from '@/app/(components)/AddThread';
 import ThreadsBySection from '@/app/(components)/ThreadsBySection';
 import React from 'react'
+import { getServerSession } from 'next-auth'
+import { options } from '../../api/auth/[...nextauth]/options'
 
-
-const SectionPage = ({params}) => {
+const SectionPage = async ({params}) => {
+  const session = await getServerSession(options)
 
     return (
         <div>
           <h1>tutaj będą wątki z danej sekcji oraz dodawanie dowych wątków</h1>
+
+          {session?<AddThread sectionId={params.id}/>: ""}
+
           <ThreadsBySection sectionId={params.id}/>
-          <AddThread sectionId={params.id}/>
+          
         </div>
     )
 }

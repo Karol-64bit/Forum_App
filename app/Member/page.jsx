@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation'
 import AddPost from '../(components)/AddPost'
 import AddSection from '../(components)/AddSection'
 import AddThread from '../(components)/AddThread'
+import UploadAvatar2 from '../(components)/UploadAvatar2'
+import UploadAvatar from '../(components)/UploadAvatar'
 
 const Member = async () => {
 
@@ -19,11 +21,19 @@ const Member = async () => {
       <p>{session?.user?.email}</p>
       <p>{session?.user?.role}</p>
       <p>{session?.user?.id}</p>
-      <AddPost threadId={2} />
+      <p>{session?.user?.avatar}</p>
+      <p>{session?.user?.name}</p>
+      <img src={session?.user?.avatar} alt={session?.user?.name} />
 
-      <AddSection />
+      {/* <UploadAvatar2 /> */}
 
-      <AddThread sectionId={"659d2a0b775b9b755c692243"}/>
+      <UploadAvatar />
+
+      {/* <AddPost threadId={2} /> */}
+
+      {/* <AddSection /> */}
+
+      {/* <AddThread sectionId={"659d2a0b775b9b755c692243"}/> */}
     </div>
   )
 }
