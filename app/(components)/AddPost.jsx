@@ -26,10 +26,11 @@ const AddPost = ({threadId}) => {
   }
 
   const handleChange = (e) => {
-    const testId = session?.user?.id
-    const testName = session?.user?.name
+    const newId = session?.user?.id
+    const newName = session?.user?.name
+    const newAvatar = session?.user?.avatar
     const value = e.target.value;
-    const updatedFormData = { ...formData, content: value, userId: testId, userName: testName };
+    const updatedFormData = { ...formData, content: value, userId: newId, userName: newName, userAvatarUrl: newAvatar,  };
     setFormData(updatedFormData);
 }
 

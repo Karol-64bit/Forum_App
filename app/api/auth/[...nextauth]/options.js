@@ -97,9 +97,18 @@ export const options = {
             return token
         },
         async session({session, token}) {
-            if(session?.user) session.user.role = token.role
-            if(session?.user) session.user.id = token.id
-            if(session?.user) session.user.avatar = token.avatar
+            if(session?.user) 
+            {
+              session.user.role = token.role
+              session.user.id = token.id
+              session.user.avatar = token.avatar
+            }
+            // const checkMail = await User.findOne({email: session.user.email})
+            // if(checkMail){
+            //   console.log("Mail")
+            // }else{
+            //   console.log("nie mail")
+            // }
             return session
         }
     }

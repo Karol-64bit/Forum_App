@@ -10,6 +10,7 @@ const threadSchema = new Schema(
     title: String,
     question: String,
     sectionId: String,
+    userAvatarUrl: String,
   },
   {
     timestamps: true,

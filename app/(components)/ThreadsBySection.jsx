@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Thread from './Thread'
+
 const getThreadsById = async (id) => {
   try{
     const res = await fetch(`http://localhost:3000/api/Thread/${id}`,{
@@ -23,13 +24,13 @@ const ThreadsBySection = async ({sectionId}) => {
 
 
     const { foundThreads } = await getThreadsById(sectionId);
-    console.log(foundThreads);
+    console.log(sectionId);
     return (
       <div>
         {sectionId}
         {foundThreads?.map((thread) => (
           <div key={thread._id}>
-            <Link href={`/`}>
+            <Link href={`/ThreadPage/${thread._id}`}>
               <Thread thread={thread} />
             </Link>
           </div>

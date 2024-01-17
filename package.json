@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^2.0.13",
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.15.0",
     "bcrypt": "^5.1.1",

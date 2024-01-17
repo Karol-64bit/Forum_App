@@ -31,6 +31,7 @@ const AddThread = ({sectionId}) => {
   const [formData, setFormData] = useState({
     userId: session?.user?.id,
     userName: session?.user?.name,
+    userAvatarUrl: session?.user?.avatar,
     title: '',
     question: '',
     section: sectionId,
@@ -38,7 +39,7 @@ const AddThread = ({sectionId}) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData,userId: session?.user?.id,userName: session?.user?.name, [name]: value }));
+    setFormData((prevData) => ({ ...prevData,userId: session?.user?.id, userName: session?.user?.name, userAvatarUrl: session?.user?.avatar, [name]: value }));
   };
 
   return (

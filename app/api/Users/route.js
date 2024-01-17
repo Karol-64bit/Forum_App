@@ -24,6 +24,7 @@ export async function POST(req) {
       return NextResponse.json({ message: "Podane mail istnieje już w bazie." }, { status: 409 });
     }
     userData.role = "user";
+    userData.avaratUrl = "";
     console.log(userData)
     const hashPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashPassword;

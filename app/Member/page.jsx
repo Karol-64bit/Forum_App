@@ -7,6 +7,7 @@ import AddSection from '../(components)/AddSection'
 import AddThread from '../(components)/AddThread'
 import UploadAvatar2 from '../(components)/UploadAvatar2'
 import UploadAvatar from '../(components)/UploadAvatar'
+import Image from 'next/image'
 
 const Member = async () => {
 
@@ -24,10 +25,11 @@ const Member = async () => {
       <p>{session?.user?.avatar}</p>
       <p>{session?.user?.name}</p>
       <img src={session?.user?.avatar} alt={session?.user?.name} />
+      <Image src={session?.user?.avatar} alt="test" width={100} height={100} className='h-20 w-20 rounded-full'/>
 
       {/* <UploadAvatar2 /> */}
 
-      <UploadAvatar />
+      {/* <UploadAvatar /> */}
 
       {/* <AddPost threadId={2} /> */}
 

@@ -12,6 +12,7 @@ export async function POST(req){
             title: body.formData.title,
             question: body.formData.question,
             sectionId: sectionId,
+            userAvatarUrl: body.formData.userAvatarUrl,
         }
         // console.log(thread);
         // console.log(sectionId);

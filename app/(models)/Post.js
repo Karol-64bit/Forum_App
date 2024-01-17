@@ -9,6 +9,7 @@ const postSchema = new Schema(
     userName: String,
     content: String,
     threadId: String,
+    userAvatarUrl: String,
   },
   {
     timestamps: true,
