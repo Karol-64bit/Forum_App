@@ -9,8 +9,6 @@ const SectionPage = async ({params}) => {
 
     return (
         <div>
-          <h1>tutaj będą wątki z danej sekcji oraz dodawanie dowych wątków</h1>
-
           {session?<AddThread sectionId={params.id}/>: ""}
 
           <ThreadsBySection sectionId={params.id}/>

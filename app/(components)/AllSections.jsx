@@ -21,11 +21,10 @@ const AllSections = async () => {
   return (
     <div>
       {sections?.map(section =>(
-        <div key={section._id}>
-            <Link href={`/SectionPage/${section._id}`}>
+        <div key={section._id} >
+            <Link href={`/SectionPage/${section._id}`} className='no-underline'>
                 <Section section={section} />
             </Link>
-            {section.title}
         </div>
       ))}
     </div>
