@@ -27,10 +27,9 @@ const ThreadsBySection = async ({sectionId}) => {
     console.log(sectionId);
     return (
       <div>
-        {sectionId}
         {foundThreads?.map((thread) => (
           <div key={thread._id}>
-            <Link href={`/ThreadPage/${thread._id}`}>
+            <Link href={`/ThreadPage/${thread._id}`} className='no-underline'>
               <Thread thread={thread} />
             </Link>
           </div>

@@ -5,7 +5,7 @@ const PostCard = ({postData}) => {
     {/* {postData} */}
   return (
     <div>
-        
+        {postData.content}
     </div>
   )
 }

@@ -26,7 +26,6 @@ const PostsByThread = async ({threadId}) => {
     console.log(foundPosts);
     return (
       <div>
-        {threadId}
         {foundPosts?.map((post) => (
           <div key={post._id}>
             <PostCard postData={post} />

@@ -1,6 +1,6 @@
 import React from 'react'
 import Section from './Section';
-import Link from 'next/link'
+
 
 const getSections = async () =>{
     try{
@@ -22,9 +22,7 @@ const AllSections = async () => {
     <div>
       {sections?.map(section =>(
         <div key={section._id} >
-            <Link href={`/SectionPage/${section._id}`} className='no-underline'>
-                <Section section={section} />
-            </Link>
+          <Section section={section} />
         </div>
       ))}
     </div>
