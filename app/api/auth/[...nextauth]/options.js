@@ -75,10 +75,11 @@ export const options = {
                   );
       
                   if (match) {
-                    console.log("Good Pass");
+                    console.log("Good Pass", foundUser);
                     delete foundUser.password;
                     foundUser["id"] = foundUser._id;
                     foundUser["role"] = foundUser.role;
+                    foundUser["avatar"] = foundUser.avatarUrl;
                     return foundUser;
                   }
                 }
