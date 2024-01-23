@@ -5,14 +5,14 @@ import { redirect } from 'next/navigation'
 import AddPost from '../(components)/AddPost'
 import AddSection from '../(components)/AddSection'
 import AddThread from '../(components)/AddThread'
-import UploadAvatar2 from '../(components)/UploadAvatar2'
+
 import UploadAvatar from '../(components)/UploadAvatar'
 import Image from 'next/image'
 
 const Member = async () => {
 
   const session = await getServerSession(options)
-
+  console.log(session?.user)
   if(!session){
     redirect("/Login")
   }

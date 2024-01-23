@@ -64,7 +64,7 @@ const AddThread = ({sectionId}) => {
               />
           </div>
 
-          <div className="w-full md:w-full flex items-start md:w-full px-3">
+          <div className="w-full flex items-start md:w-full px-3">
             <div className='-mr-1'>
               <input className='bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100' type='submit' name="submit" value="Dodaj" />
             </div>

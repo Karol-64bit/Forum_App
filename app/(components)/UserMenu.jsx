@@ -35,7 +35,7 @@ const UserMenu = ({userIconUrl, userName}) => {
                   <table className="w-full text-black">
                     <tbody>
                       <tr>
-                        <td className="p-2 cursor-pointer"><Link href="/UserProfile">Profile</Link></td>
+                        <td className="p-2 cursor-pointer"><Link href="/User">Profile</Link></td>
                       </tr>
                       <tr>
                         <td className="p-2 cursor-pointer"><LogoutButton /></td>

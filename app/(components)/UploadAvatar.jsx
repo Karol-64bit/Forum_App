@@ -75,11 +75,12 @@ const Dropzone = ({ className }) => {
     }).then(res => res.json())
 
     // write to database using server actions
-    await saveToDatabase({
+    const id = await saveToDatabase({
       version: data?.version,
       signature: data?.signature,
       public_id: data?.public_id
     })
+    console.log(id)
   }
 
   return (
@@ -150,33 +151,6 @@ const Dropzone = ({ className }) => {
           ))}
         </ul>
 
-        {/* Rejected Files */}
-        <h3 className='title mt-24 border-b pb-3 text-lg font-semibold text-stone-600'>
-          Rejected Files
-        </h3>
-        <ul className='mt-6 flex flex-col'>
-          {rejected.map(({ file, errors }) => (
-            <li key={file.name} className='flex items-start justify-between'>
-              <div>
-                <p className='mt-2 text-sm font-medium text-stone-500'>
-                  {file.name}
-                </p>
-                <ul className='text-[12px] text-red-400'>
-                  {errors.map(error => (
-                    <li key={error.code}>{error.message}</li>
-                  ))}
-                </ul>
-              </div>
-              <button
-                type='button'
-                className='mt-1 rounded-md border border-rose-400 px-3 py-1 text-[12px] font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-rose-400 hover:text-white'
-                onClick={() => removeRejected(file.name)}
-              >
-                remove
-              </button>
-            </li>
-          ))}
-        </ul>
       </section>
     </form>
   )

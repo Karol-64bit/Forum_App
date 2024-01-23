@@ -80,6 +80,7 @@ export const options = {
                     foundUser["id"] = foundUser._id;
                     foundUser["role"] = foundUser.role;
                     foundUser["avatar"] = foundUser.avatarUrl;
+                    foundUser["createdAt"] = foundUser.createdAt;
                     return foundUser;
                   }
                 }
@@ -92,9 +93,12 @@ export const options = {
     ],
     callbacks: {
         async jwt({token, user}){
-            if(user) token.role = user.role
-            if(user) token.id = user.id
-            if(user) token.avatar = user.avatar
+            if(user) {
+              token.role = user.role
+              token.id = user.id
+              token.avatar = user.avatar
+              token.createdAt = user.createdAt
+            }
             return token
         },
         async session({session, token}) {
@@ -103,6 +107,7 @@ export const options = {
               session.user.role = token.role
               session.user.id = token.id
               session.user.avatar = token.avatar
+              session.user.createdAt = token.createdAt
             }
             // const checkMail = await User.findOne({email: session.user.email})
             // if(checkMail){
