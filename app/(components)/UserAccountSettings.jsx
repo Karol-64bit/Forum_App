@@ -6,8 +6,10 @@ const UserAccountSettings = ({editMode, userData}) => {
   
   const [userName, setUserName] = useState("")
   const [userMail, setUserMail] = useState("")
+
   console.log(userData)
-  const handleEditUserName = () => {console.log(userName)}
+
+  const handleEditUserName = () => {console.log(userData)}
 
   const handleEditUserMail = () => {console.log(userMail)}
 
