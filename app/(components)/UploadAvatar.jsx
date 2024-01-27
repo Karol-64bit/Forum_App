@@ -5,7 +5,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { getSignature, saveToDatabase } from '../_actions'
 
-const Dropzone = ({ className }) => {
+
+const Dropzone = ({ className, type, owner }) => {
   const [files, setFiles] = useState([])
   const [rejected, setRejected] = useState([])
 
@@ -81,6 +82,29 @@ const Dropzone = ({ className }) => {
       public_id: data?.public_id
     })
     console.log(id)
+
+    if(type=="userAvatar"){
+      owner.avatarUrl = id;
+      console.log("owener client side",owner)
+      const res = await fetch(`/api/Users/${owner.id}`,{
+        method: "PUT",
+        body: JSON.stringify(owner),
+        "Content-type": "application/json",
+      });
+      console.log(res);
+      if(!res.ok){
+          throw new Error("Failed to upload image.");
+      }
+    }
+    if(type=="logoImage"){
+
+    }
+
+
+
+
+
+
   }
 
   return (
