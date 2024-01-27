@@ -12,8 +12,8 @@ const AddThread = ({sectionId}) => {
     },
   });
 
-  const handleAddSection = async (e) => {
-    console.log(formData)
+  const handleAddThread = async (e) => {
+    console.log("Dane z forumlarza:", formData)
     e.preventDefault();
     const res = await fetch("/api/Thread",{
       method: "POST",
@@ -44,7 +44,7 @@ const AddThread = ({sectionId}) => {
 
   return (
     <div className='flex justify-center'>
-      <form method="post" onSubmit={handleAddSection} className="w-full max-w-5xl bg-white rounded-lg px-4 pt-2">
+      <form method="post" onSubmit={handleAddThread} className="w-full max-w-5xl bg-white rounded-lg px-4 pt-2">
         <div className="flex flex-wrap -mx-3 mb-6">
           <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Dodaj nowy wątek</h2>
 

@@ -10,6 +10,7 @@ const Thread = ({thread}) => {
       day: "2-digit",
       hour: "2-digit",
       minute: "2-digit",
+      
     }
 
     const date = new Date(timestamp)
@@ -17,7 +18,6 @@ const Thread = ({thread}) => {
 
     return formattedDate;
   }
-
 
   return (
     <div>

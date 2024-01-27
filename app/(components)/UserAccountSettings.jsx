@@ -1,21 +1,43 @@
 "use client"
 import React, {useState} from 'react'
-import Dropzone from './UploadAvatar'
+import Dropzone from './UploadPhoto'
 
 const UserAccountSettings = ({editMode, userData}) => {
   
   const [userName, setUserName] = useState("")
   const [userMail, setUserMail] = useState("")
 
-  console.log(userData)
+  // console.log(userData)
 
-  const handleEditUserName = () => {console.log(userData)}
+  const handleEditUserName = async () => {
+    userData.name = userName
+    const res = await fetch(`/api/Users/${userData.id}`,{
+      method: "PUT",
+      body: JSON.stringify({userData}),
+      "Content-type": "application/json",
+    });
+    console.log(res);
+    if(!res.ok){
+        throw new Error("Failed to upload image.");
+    }
+  }
 
-  const handleEditUserMail = () => {console.log(editMode);}
+  const handleEditUserMail = async () => {
+    userData.email = userMail
+    const res = await fetch(`/api/Users/${userData.id}`,{
+      method: "PUT",
+      body: JSON.stringify({userData}),
+      "Content-type": "application/json",
+    });
+    console.log(res);
+    if(!res.ok){
+        throw new Error("Failed to upload image.");
+    }
+  }
 
   return (
     <div className="rounded-xl border p-5 shadow-md bg-white">
-      {console.log(editMode)}
+      {/* {console.log(editMode)} */}
       {editMode == "avatar" ? (
         <div>
           <Dropzone type="userAvatar" owner={userData} />
@@ -36,10 +58,10 @@ const UserAccountSettings = ({editMode, userData}) => {
               </h2>
               <div className="w-full md:w-full px-3 mb-2 mt-2 flex">
                 <input
-                  className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                  id="title"
+                  className="bg-white rounded border border-gray-400 leading-normal resize-none w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+                  id="name"
                   type="text"
-                  name="title"
+                  name="name"
                   onChange={(e) => {
                     setUserName(e.target.value);
                   }}
@@ -47,14 +69,15 @@ const UserAccountSettings = ({editMode, userData}) => {
                   placeholder="Nowa nazwa"
                 />
                 <input
-                  className="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
+                  className="bg-white text-gray-700 font-medium mx-1 p-2 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
                   type="submit"
                   name="submit"
-                  value="Dodaj"
+                  value="Zapisz nową nazwe"
                 />
               </div>
             </div>
           </form>
+          <button onClick={handleEditUserName}>testowy przycisk</button>
         </div>
       ) : (
         ""
@@ -72,10 +95,10 @@ const UserAccountSettings = ({editMode, userData}) => {
               </h2>
               <div className="w-full md:w-full px-3 mb-2 mt-2 flex">
                 <input
-                  className="bg-white border border-gray-400 leading-normal resize-none w-full rounded-lg py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                  id="title"
+                  className="bg-white border rounded border-gray-400 leading-normal resize-none w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+                  id="email"
                   type="text"
-                  name="title"
+                  name="email"
                   onChange={(e) => {
                     setUserMail(e.target.value);
                   }}
@@ -86,11 +109,12 @@ const UserAccountSettings = ({editMode, userData}) => {
                   className="bg-white text-gray-700 font-medium mx-1 p-2 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-gray-100"
                   type="submit"
                   name="submit"
-                  value="Dodaj"
+                  value="Zapisz nowy Email"
                 />
               </div>
             </div>
           </form>
+          
         </div>
       ) : (
         ""

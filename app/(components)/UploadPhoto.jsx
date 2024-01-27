@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { getSignature, saveToDatabase } from '../_actions'
+import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const Dropzone = ({ className, type, owner }) => {
@@ -84,7 +86,11 @@ const Dropzone = ({ className, type, owner }) => {
     console.log(id)
 
     if(type=="userAvatar"){
-      owner.avatarUrl = id;
+
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME
+      const url = `https://res.cloudinary.com/${cloudName}/${id}`
+      owner.avatarUrl = url;
+
       console.log("owener client side",owner)
       const res = await fetch(`/api/Users/${owner.id}`,{
         method: "PUT",
@@ -97,14 +103,8 @@ const Dropzone = ({ className, type, owner }) => {
       }
     }
     if(type=="logoImage"){
-
+      
     }
-
-
-
-
-
-
   }
 
   return (
@@ -115,12 +115,12 @@ const Dropzone = ({ className, type, owner }) => {
         })}
       >
         <input {...getInputProps({ name: 'file' })} />
-        <div className='flex flex-col items-center justify-center gap-4'>
-          
+        <div className='flex flex-col items-center justify-center gap-4 m-10'>
+          <FontAwesomeIcon icon={faCloudArrowUp} className='w-5 h-5 fill-current' />
           {isDragActive ? (
-            <p>Drop the files here ...</p>
+            <p>Upuść plik tutaj ...</p>
           ) : (
-            <p>Drag & drop files here, or click to select files</p>
+            <p>Przeciągnij plik i upuśc go tutaj, lub kliknij aby go wybrać.</p>
           )}
         </div>
       </div>

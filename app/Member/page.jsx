@@ -6,7 +6,7 @@ import AddPost from '../(components)/AddPost'
 import AddSection from '../(components)/AddSection'
 import AddThread from '../(components)/AddThread'
 
-import UploadAvatar from '../(components)/UploadAvatar'
+import UploadAvatar from '../(components)/UploadPhoto'
 import Image from 'next/image'
 
 const Member = async () => {

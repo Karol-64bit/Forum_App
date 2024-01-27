@@ -16,6 +16,7 @@ const UserMenu = ({userIconUrl, userName}) => {
               {userIconUrl?.length > 1 || userIconUrl ? 
               <Image
                 src={userIconUrl}
+                // src={"/images/user.png"}
                 alt="User Icon"
                 className="w-8 h-8 rounded-full cursor-pointer"
                 onClick={toggleMenu}

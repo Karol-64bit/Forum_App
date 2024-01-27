@@ -30,7 +30,7 @@ export async function PUT(req, {params}) {
           }
         );
             console.log("user info -> ",userInfo)
-        return NextResponse.json({ res: userInfo }, { status: 200 });
+        return NextResponse.json({ res: "Updated"}, { status: 200 });
     } catch (error) {
         return NextResponse.json({message: "Error"}, {status: 500});
     }
