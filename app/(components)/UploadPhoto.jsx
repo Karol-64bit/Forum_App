@@ -86,7 +86,7 @@ const Dropzone = ({ className, type, owner }) => {
     console.log(id)
 
     if(type=="userAvatar"){
-
+      
       const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME
       const url = `https://res.cloudinary.com/${cloudName}/${id}`
       owner.avatarUrl = url;

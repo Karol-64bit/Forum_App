@@ -17,6 +17,7 @@ export async function PUT(req, {params}) {
     try{
         const {id} = params;
         const body = await req.json();
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",body);
         console.log("test",body.avatarUrl)
         const test = body.avatarUrl;
         console.log("id", id);

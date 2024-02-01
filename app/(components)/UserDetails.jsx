@@ -12,7 +12,7 @@ const UserDetails = ({userData, editMode, postCounter}) => {
             case "user": return "Zwykły użytkownik";
             case "moderator": return "Moderator";
             case "GitHub User": return "Użytkownik GitHub";
-            case "Google User": return "Użytkownik Google"
+            case "Google User": return "Użytkownik Google";
         }
     }
 

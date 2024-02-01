@@ -9,11 +9,12 @@ const UserAccountSettings = ({editMode, userData}) => {
 
   // console.log(userData)
 
-  const handleEditUserName = async () => {
+  const handleEditUserName = async (event) => {
+    event.preventDefault();
     userData.name = userName
     const res = await fetch(`/api/Users/${userData.id}`,{
       method: "PUT",
-      body: JSON.stringify({userData}),
+      body: JSON.stringify(userData),
       "Content-type": "application/json",
     });
     console.log(res);
@@ -22,11 +23,12 @@ const UserAccountSettings = ({editMode, userData}) => {
     }
   }
 
-  const handleEditUserMail = async () => {
+  const handleEditUserMail = async (event) => {
+    event.preventDefault();
     userData.email = userMail
     const res = await fetch(`/api/Users/${userData.id}`,{
       method: "PUT",
-      body: JSON.stringify({userData}),
+      body: JSON.stringify(userData),
       "Content-type": "application/json",
     });
     console.log(res);
@@ -64,6 +66,7 @@ const UserAccountSettings = ({editMode, userData}) => {
                   name="name"
                   onChange={(e) => {
                     setUserName(e.target.value);
+                    console.log(userData)
                   }}
                   value={userName}
                   placeholder="Nowa nazwa"

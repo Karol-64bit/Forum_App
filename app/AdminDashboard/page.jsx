@@ -5,6 +5,7 @@ import Post from "../(models)/Post";
 import User from "../(models)/User";
 import Section from "../(models)/Section";
 import ForumSettings from '../(components)/ForumSettings';
+import UsersManage from '../(components)/UsersManage';
 
 const AdminDashboard = async () => {
 
@@ -13,6 +14,8 @@ const AdminDashboard = async () => {
   const foundSection = await Section.find();
   const foundUsers = await User.find();
 
+  const allUsers = JSON.parse(JSON.stringify(foundUsers))
+  
   return (
     <div>
       <ForumStatistic
@@ -23,6 +26,7 @@ const AdminDashboard = async () => {
       />
 
       <ForumSettings />
+      <UsersManage allUsers={allUsers}/>
     </div>
   );
 }
