@@ -17,10 +17,7 @@ export async function PUT(req, {params}) {
     try{
         const {id} = params;
         const body = await req.json();
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",body);
-        console.log("test",body.avatarUrl)
-        const test = body.avatarUrl;
-        console.log("id", id);
+        console.log("Body: ",body)
         const userInfo = await User.findOneAndUpdate(
           { _id: id },
           {
@@ -36,3 +33,20 @@ export async function PUT(req, {params}) {
         return NextResponse.json({message: "Error"}, {status: 500});
     }
 }
+
+export async function DELETE(req, { params }) {
+    try {
+      const { id } = params;
+  
+      const result = await User.findByIdAndDelete(id);
+  
+      if (!result) {
+        return NextResponse.json({ message: "User not found" }, { status: 404 });
+      }
+  
+      return NextResponse.json({ message: "User deleted" }, { status: 200 });
+    } catch (error) {
+      console.error(error); 
+      return NextResponse.json({ message: "Error deleting user" }, { status: 500 });
+    }
+  }
