@@ -7,7 +7,10 @@ import Section from "../(models)/Section";
 import ForumSettings from '../(components)/ForumSettings';
 import UsersManage from '../(components)/UsersManage';
 
+import SettingsProvider from '../(components)/SettingsProvider';
+
 const AdminDashboard = async () => {
+
 
   const foundThreads = await Thread.find();
   const foundPosts = await Post.find();
@@ -15,7 +18,7 @@ const AdminDashboard = async () => {
   const foundUsers = await User.find();
 
   const allUsers = JSON.parse(JSON.stringify(foundUsers))
-  
+
   return (
     <div>
       <ForumStatistic

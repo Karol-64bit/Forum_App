@@ -6,13 +6,12 @@ import { options } from '../../api/auth/[...nextauth]/options'
 
 const SectionPage = async ({params}) => {
   const session = await getServerSession(options)
-
+  console.log("test");
     return (
         <div>
           {session?<AddThread sectionId={params.id}/>: ""}
 
           <ThreadsBySection sectionId={params.id}/>
-          
         </div>
     )
 }

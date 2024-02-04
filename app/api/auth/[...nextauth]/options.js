@@ -4,6 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import User from "@/app/(models)/User";
 import bcrypt from "bcrypt"
 
+const checkedGit = false;
+
 export const options = {
 
   pages: {
@@ -11,7 +13,7 @@ export const options = {
   },
 
     providers: [
-        GitHubProvider({
+      checkedGit && GitHubProvider({
             profile(profile) {
                 console.log("Profile GitHub: ", profile)
 
@@ -49,18 +51,7 @@ export const options = {
           }),
           CredentialsProvider({
             name: "Credentials",
-            credentials: {
-              // email: {
-              //   label: "Email:",
-              //   type: "text",
-              //   placeholder: "your-email",
-              // },
-              // password: {
-              //   label: "Password:",
-              //   type: "password",
-              //   placeholder: "your-password",
-              // },
-            },
+            credentials: {},
             async authorize(credentials) {
               try {
                 const foundUser = await User.findOne({ email: credentials.email })

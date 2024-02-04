@@ -4,6 +4,7 @@ import Image from "next/image";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
+// import SettingsProvider from '../(components)/SettingsProvider';
 
 const UsersManage = ({ allUsers }) => {
   const [editMode, setEditMode] = useState(false);
