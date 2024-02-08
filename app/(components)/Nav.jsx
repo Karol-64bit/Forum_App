@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { getServerSession } from 'next-auth'
 import { options } from '../api/auth/[...nextauth]/options'
-import LogoutButton from './LogoutButton'
+import Settings from '../(models)/Settings'
 import UserMenu from './UserMenu'
 
 const Nav = async () => {
@@ -11,12 +11,15 @@ const Nav = async () => {
   const userName = session?.user?.name
   const role = session?.user?.role
 
+  const settings = await Settings.findOne();
+  console.log(settings.title)
+
   return (
     <div>
-      <header className='bg-gray-600 text-gray-100'>
+      <header className='bg-gray-600 text-gray-100' style={{ backgroundColor: settings.navColor }}>
         <nav className='flex justify-between items-center w-full px-10 py-4'>
           <div>
-            <Link href="/">Home</Link>
+            <Link href="/">{settings.title}</Link>
           </div>
           <div className='flex gap-10'>     
             <Link href="/Member">Member</Link>
