@@ -10,7 +10,7 @@ const settingsSchema = new Schema(
     logoImage: String,
     footerImage: String,
     footerText: String,
-    backgroudColor: String,
+    backgroundColor: String,
     navColor: String,
     element1Color: String,
     element2Color: String,

@@ -12,7 +12,7 @@ const Nav = async () => {
   const role = session?.user?.role
 
   const settings = await Settings.findOne();
-  console.log(settings.title)
+
 
   return (
     <div>

@@ -3,6 +3,8 @@ import Nav from './(components)/Nav'
 import './globals.css'
 
 import AppProvider from './(components)/AppContext'
+import Settings from '@/app/(models)/Settings'
+const settings = await Settings.findOne();
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,11 +12,13 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <AppProvider>
         <AuthProvider>
-        
+          {/* #e5e7eb */}
+          {/* <body className='bg-gray-200'style={{ backgroundColor: settings.backgroundColor }}> */}
           <body className='bg-gray-200'>
             <Nav />
               <div className='m-2'>

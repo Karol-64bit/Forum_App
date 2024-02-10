@@ -215,9 +215,9 @@ const ForumSettings = () => {
 
         </tbody>
       </table>
-
-      <button type="button" className='w-full' onClick={handleSubmit}>Zatwiedz wszystkie zmiany</button>
-
+      <div className='w-full flex my-3'>
+      <button type="button" className='w-7/12 bg-white text-gray-700 font-medium border p-2 px-3 border-gray-400  rounded-lg mx-auto  hover:bg-gray-100' onClick={handleSubmit}>Zatwiedz wszystkie zmiany</button>
+      </div>
     </div>
   )
 }

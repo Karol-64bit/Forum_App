@@ -1,16 +1,17 @@
 "use client"
 
 import { useSession } from 'next-auth/react'
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { redirect } from 'next/navigation'
+import {AppContext} from "@/app/(components)/AppContext";
 
 const AddPost = ({threadId}) => {
-  const {data: session} = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/ClientMember")
-    },
-  });
+  // const {data: session} = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect("/api/auth/signin?callbackUrl=/ClientMember")
+  //   },
+  // });
 
   const handleAddPost = async (e) => {
     e.preventDefault();
@@ -42,6 +43,8 @@ const AddPost = ({threadId}) => {
   }
 
   const [formData, setFormData] = useState(startingData)
+
+  const settings = useContext(AppContext)
 
   return (
     <div>

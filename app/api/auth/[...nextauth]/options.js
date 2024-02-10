@@ -4,16 +4,14 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import User from "@/app/(models)/User";
 import bcrypt from "bcrypt"
 
-const checkedGit = false;
-
 export const options = {
-
+  
   pages: {
     signIn: "/Login",
   },
 
     providers: [
-      checkedGit && GitHubProvider({
+      GitHubProvider({
             profile(profile) {
                 console.log("Profile GitHub: ", profile)
 

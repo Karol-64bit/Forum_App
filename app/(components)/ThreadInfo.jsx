@@ -24,7 +24,7 @@ const ThreadInfo = async ({threadId}) => {
 
   const { threadInfo } = await getThreadInfo(threadId);
 
-  const time = threadInfo.createdAt
+  // const time = threadInfo.createdAt
 
     return (
       <div className='flex my-8 justify-center'>  
@@ -36,7 +36,7 @@ const ThreadInfo = async ({threadId}) => {
             </div>
             <div className="flex items-center space-x-8">
               <button className="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">Category</button>
-              <div className="text-xs text-neutral-500">{time}</div>
+              <div className="text-xs text-neutral-500">{threadInfo.createdAt}</div>
             </div>
           </div>
           <div className="mt-4 mb-6">

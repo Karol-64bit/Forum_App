@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
 import Thread from './Thread'
+import { getServerSession } from 'next-auth'
+import { options } from '../api/auth/[...nextauth]/options'
 
 const getThreadsById = async (id) => {
   try{
@@ -22,6 +24,8 @@ const getThreadsById = async (id) => {
 
 const ThreadsBySection = async ({sectionId}) => {
 
+  const session = await getServerSession(options)
+  const userRole = session?.user?.role
 
     const { foundThreads } = await getThreadsById(sectionId);
     console.log(sectionId);
@@ -30,7 +34,7 @@ const ThreadsBySection = async ({sectionId}) => {
         {foundThreads?.map((thread) => (
           <div key={thread._id}>
             <Link href={`/ThreadPage/${thread._id}`} className='no-underline'>
-              <Thread thread={thread} />
+              <Thread thread={thread} userRole={userRole}/>
             </Link>
           </div>
         ))}
