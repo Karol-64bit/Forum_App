@@ -6,11 +6,20 @@ import User from "../(models)/User";
 import Section from "../(models)/Section";
 import ForumSettings from '../(components)/ForumSettings';
 import UsersManage from '../(components)/UsersManage';
+import { getServerSession } from 'next-auth'
+import { options } from '../api/auth/[...nextauth]/options'
+import { redirect } from 'next/navigation'
 
-import SettingsProvider from '../(components)/SettingsProvider';
+// import SettingsProvider from '../(components)/SettingsProvider';
 
 const AdminDashboard = async () => {
 
+  const session = await getServerSession(options);
+  const role = session?.user?.role
+
+  if(role!="admin"){
+    redirect("/")
+  }
 
   const foundThreads = await Thread.find();
   const foundPosts = await Post.find();

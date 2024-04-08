@@ -9,8 +9,10 @@ const Description = async () => {
 
     return (
         <div className='flex my-8 justify-center'>  
-            <div className="rounded-xl border p-5 shadow-md w-7/12 bg-white">
-                {settings.description}
+            <div className="rounded-xl border p-5 shadow-md w-9/12 bg-white">
+                {/* {settings.description} */}
+                {/* <div>Regulamin:</div> */}
+                <div>Opis forum lub regulamin</div>
             </div>
         </div>
     )

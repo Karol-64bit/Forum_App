@@ -7,28 +7,22 @@ export async function POST(req) {
     const body = await req.json();
     const userData = body.formData;
 
-    //Confirm data exists
     if (!userData?.email || !userData.password || !userData.name) {
       return NextResponse.json(
         { message: "Wszystkie pola są wymagane." },
-        { status: 400 }
+        { status: 409 }
       );
     }
 
-    // check for duplicate emails
-    const duplicate = await User.findOne({ email: userData.email })
-      .lean()
-      .exec();
+    const duplicate = await User.findOne({ email: userData.email }).lean().exec();
 
     if (duplicate) {
       return NextResponse.json({ message: "Podane mail istnieje już w bazie." }, { status: 409 });
     }
     userData.role = "user";
     userData.avaratUrl = "";
-    console.log(userData)
     const hashPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashPassword;
-    console.log(userData);
 
     await User.create(userData);
     return NextResponse.json({ message: "User Created." }, { status: 201 });

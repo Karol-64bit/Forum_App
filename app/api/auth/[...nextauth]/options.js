@@ -14,12 +14,10 @@ export const options = {
       GitHubProvider({
             profile(profile) {
                 console.log("Profile GitHub: ", profile)
-
                 let userRole = "GitHub User"
                 if(profile?.email == process.env.ADMIN_EMAIL){
                     userRole = 'admin'
                 }
-
                 return {
                     ...profile,
                     role: userRole,
@@ -98,12 +96,6 @@ export const options = {
               session.user.avatar = token.avatar
               session.user.createdAt = token.createdAt
             }
-            // const checkMail = await User.findOne({email: session.user.email})
-            // if(checkMail){
-            //   console.log("Mail")
-            // }else{
-            //   console.log("nie mail")
-            // }
             return session
         }
     }

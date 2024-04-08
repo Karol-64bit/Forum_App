@@ -9,7 +9,7 @@ export async function GET(req, {params}) {
     
         return NextResponse.json({ foundPosts },{status: 200});
     } catch (error) {
-        return NextResponse.json({message: "Error"}, {status: 500});
+        return NextResponse.json({message: "Error", error}, {status: 500});
     }
 }
 

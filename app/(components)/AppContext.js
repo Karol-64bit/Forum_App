@@ -5,6 +5,7 @@ import {createContext} from 'react';
 export const AppContext = createContext();
 
 async function getSettings() {
+    
     const response = await fetch("http://localhost:3000/api/Settings", {
         type: 'GET',
         cache: "no-store"

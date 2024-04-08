@@ -4,18 +4,14 @@ import { getServerSession } from 'next-auth'
 import { options } from '../api/auth/[...nextauth]/options'
 
 const getPostsById = async (id) => {
-
-
   try{
     const res = await fetch(`http://localhost:3000/api/Post/${id}`,{
-      type: 'GET', // ?
+      type: 'GET',
       cache: "no-store"
     })
-
     if(!res.ok){
-      throw new Error("Failed to get the ticket")
+      throw new Error("Błąd w pobieraniu postów")
     }
-    
     console.log(res)
     return res.json();
   } catch (error){

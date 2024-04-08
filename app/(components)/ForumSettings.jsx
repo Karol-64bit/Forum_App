@@ -41,7 +41,6 @@ const ForumSettings = () => {
     if(!res.ok){
         throw new Error("Failed to update settings.");
     }
-
     
   };
 
@@ -58,7 +57,6 @@ const ForumSettings = () => {
     <table className="min-w-full leading-normal">
 
         <tbody>
-
 
             <tr>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -81,7 +79,7 @@ const ForumSettings = () => {
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <p className="text-gray-900 whitespace-no-wrap">
-                  <input type="text" name='description' value={data.description} onChange={handleChange} />
+                  <textarea type="text" name='description' value={data.description} onChange={handleChange} />
                 </p>
               </td>
             </tr>
@@ -103,12 +101,23 @@ const ForumSettings = () => {
             <tr>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <p className="text-gray-900 whitespace-no-wrap">
+                  {"Kolor paska nawigacji"}
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <input type="color" name="navColor" value={data.navColor} onChange={handleChange} />                 
+              </td>
+            </tr>
+
+            <tr>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-900 whitespace-no-wrap">
                   {"Tekst w stopce (na dole strony)"}
                 </p>
               </td>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <p className="text-gray-900 whitespace-no-wrap">
-                  <input type="textarea" name='description' value={data.description} onChange={handleChange} />
+                  <textarea type="text" name='footerText' value={data.footerText} onChange={handleChange} />
                 </p>
               </td>
             </tr>
@@ -127,16 +136,7 @@ const ForumSettings = () => {
               </td>
             </tr>
 
-            <tr>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                <p className="text-gray-900 whitespace-no-wrap">
-                  {"Kolor paska nawigacji"}
-                </p>
-              </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <input type="color" name="navColor" value={data.navColor} onChange={handleChange} />                 
-              </td>
-            </tr>
+
 
             <tr>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

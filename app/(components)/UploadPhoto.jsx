@@ -42,10 +42,6 @@ const Dropzone = ({ className, type, owner }) => {
     return () => files.forEach(file => URL.revokeObjectURL(file.preview))
   }, [files])
 
-  const removeFile = name => {
-    setFiles(files => files.filter(file => file.name !== name))
-  }
-
   const removeAll = () => {
     setFiles([])
     setRejected([])
@@ -128,29 +124,23 @@ const Dropzone = ({ className, type, owner }) => {
       {/* Preview */}
       <section className='mt-10'>
         <div className='flex gap-4'>
-          <h2 className='title text-3xl font-semibold'>Preview</h2>
+
           <button
             type='button'
             onClick={removeAll}
-            className='mt-1 rounded-md border border-rose-400 px-3 text-[12px] font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-rose-400 hover:text-white'
+            className='mt-1 rounded-md border border-rose-400 px-3 font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-rose-400 hover:text-white'
           >
-            Remove all files
+            Usuń zdjęcie
           </button>
           <button
             type='submit'
-            className='ml-auto mt-1 rounded-md border border-purple-400 px-3 text-[12px] font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-purple-400 hover:text-white'
+            className='ml-auto mt-1 rounded-md border border-purple-400 px-3 font-bold uppercase tracking-wider text-stone-500 transition-colors hover:bg-purple-400 hover:text-white'
           >
-            Upload to Cloudinary
+            Zatwierdz przesłanie zdjęcia
           </button>
         </div>
-
-        {/* Accepted files */}
-        <h3 className='title mt-10 border-b pb-3 text-lg font-semibold text-stone-600'>
-          Accepted Files
-        </h3>
-        <ul className='mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6'>
           {files.map(file => (
-            <li key={file.name} className='relative h-32 rounded-md shadow-lg'>
+            <div key={file.name} className='relative h-32 m-6'>
               <Image
                 src={file.preview}
                 alt={file.name}
@@ -161,19 +151,8 @@ const Dropzone = ({ className, type, owner }) => {
                 }}
                 className='h-full w-full rounded-md object-contain'
               />
-              <button
-                type='button'
-                className='absolute -right-3 -top-3 flex h-7 w-7 items-center justify-center rounded-full border border-rose-400 bg-rose-400 transition-colors hover:bg-white'
-                onClick={() => removeFile(file.name)}
-              >
-                
-              </button>
-              <p className='mt-2 text-[12px] font-medium text-stone-500'>
-                {file.name}
-              </p>
-            </li>
+            </div>
           ))}
-        </ul>
 
       </section>
     </form>

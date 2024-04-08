@@ -27,7 +27,7 @@ const Section = async ({section}) => {
 
   return (
     <div className='flex my-8 justify-center'>  
-      <div className="rounded-xl border p-5 shadow-md w-7/12 bg-white">
+      <div className="rounded-xl border p-5 shadow-md w-9/12 bg-white">
         <Link href={`/SectionPage/${section._id}`} className='no-underline'>
           <div className="mt-4 mb-6 ">
             <div className="mb-3 text-xl font-bold ">{section.title}</div>

@@ -6,12 +6,12 @@ import { redirect } from 'next/navigation'
 import {AppContext} from "@/app/(components)/AppContext";
 
 const AddPost = ({threadId}) => {
-  // const {data: session} = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect("/api/auth/signin?callbackUrl=/ClientMember")
-  //   },
-  // });
+  const {data: session} = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect("/api/auth/signin?callbackUrl=/")
+    },
+  });
 
   const handleAddPost = async (e) => {
     e.preventDefault();
@@ -47,13 +47,24 @@ const AddPost = ({threadId}) => {
   const settings = useContext(AppContext)
 
   return (
-    <div>
-      <h1>Add new post</h1>
-      <form method="post" onSubmit={handleAddPost}>
-        <label>Content</label>
-        <input id="content" type='text' name="content" onChange={handleChange} value={formData.content}/>
-        <input type='submit' name="submit" value="Add" />
-      </form>
+    <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-4xl shadow-lg">
+        <div class="md:flex">
+            <div class="w-full px-4 py-6 ">
+
+                <div class="mb-2">
+                <span class="text-m ">Dodaj nowy post</span>
+                <textarea type="text" class="h-24 py-1 px-3 w-full border-2 border-slate-700 rounded focus:outline-none focus:border-blue-600 resize-none" onChange={handleChange} value={formData.content}></textarea>
+                </div>   
+
+                <div class="mt-3 text-right">
+
+                <a href="#">Anuluj</a>
+                <button class="ml-2 h-10 w-32 bg-slate-700 rounded text-white hover:bg-green-700" onClick={handleAddPost}>Dodaj</button>
+                  
+                </div>
+                
+            </div>
+        </div>
     </div>
   )
 }

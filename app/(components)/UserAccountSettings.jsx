@@ -38,7 +38,7 @@ const UserAccountSettings = ({editMode, userData}) => {
   }
 
   return (
-    <div className="rounded-xl border p-5 shadow-md bg-white">
+    <div className="rounded-xl border p-5 shadow-md bg-white ml-2">
       {/* {console.log(editMode)} */}
       {editMode == "avatar" ? (
         <div>

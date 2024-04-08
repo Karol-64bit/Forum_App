@@ -10,7 +10,7 @@ const ForumStatistic = ({
   return (
     <div className="w-7/12  mx-auto">
 
-        <div className="container-sm px-5 py-5">
+        <div className="container-sm  py-5">
           <div className="flex flex-wrap w-full mb-8">
             <div className="w-full mb-6 lg:mb-0">
               <h1 className="sm:text-4xl text-5xl font-medium title-font mb-2 text-gray-900">Statystyka forum</h1>

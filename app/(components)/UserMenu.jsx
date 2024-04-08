@@ -18,7 +18,7 @@ const UserMenu = ({userIconUrl, userName}) => {
                 src={userIconUrl}
                 // src={"/images/user.png"}
                 alt="User Icon"
-                className="w-8 h-8 rounded-full cursor-pointer"
+                className="w-10 h-10 rounded-full cursor-pointer"
                 onClick={toggleMenu}
                 width={100} height={100}
               />
@@ -36,7 +36,7 @@ const UserMenu = ({userIconUrl, userName}) => {
                   <table className="w-full text-black">
                     <tbody>
                       <tr>
-                        <td className="p-2 cursor-pointer"><Link href="/User">Profile</Link></td>
+                        <td className="p-2 cursor-pointer"><Link href="/User">Profil</Link></td>
                       </tr>
                       <tr>
                         <td className="p-2 cursor-pointer"><LogoutButton /></td>
